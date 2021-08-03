@@ -32,12 +32,31 @@ public class WhatsinmeApplication {
 			itemRepository.save(new Item("Shiitake"));
 			itemRepository.save(new Item("Yogurt"));
 
-			Unit unit = new Unit(LocalDate.now());
-			unit.setItem(itemRepository.findByName("Milk"));
-			unitRepository.save(unit);
+			unitRepository.save(new Unit(
+				LocalDate.now(),
+				itemRepository.findByName("Milk")
+			));
+
+			// Item item = itemRepository.findByName("Milk");
+			// Unit unit00 = new Unit(LocalDate.now());
+			// unit00.setItem(item);
+			// item.getUnits().add(unit00);
+			// itemRepository.save(item);
+
+			// unit00.setItem(itemRepository.findByName("Milk"));
+			// unitRepository.save(unit00);
+
+			// Unit unit01 = new Unit(LocalDate.of(1990, 1, 1));
+			// unit01.setItem(itemRepository.findByName("Milk"));
+			// unitRepository.save(unit01);
 
 			// for (Item item : itemRepository.findAll()) {
 			// 	logger.info(item.toString());
+			// }
+
+			// for (Unit unit : unitRepository.findByItemId(1L)) {
+			// 	// logger.info("ree");
+			// 	logger.info(unit.toString());
 			// }
 
 			// logger.info(itemRepository.findById(1L).toString());

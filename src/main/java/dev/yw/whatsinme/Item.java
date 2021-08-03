@@ -1,17 +1,22 @@
 package dev.yw.whatsinme;
 
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
-public class Item {
+public class Item implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    // @Column(name = "itemid")
     private Long id;
 
     @Column(unique = true, nullable = false)
@@ -23,6 +28,13 @@ public class Item {
     @Column(nullable = true)
     private int rating;
 
+    @OneToMany(
+        mappedBy = "item",
+        fetch = FetchType.LAZY,
+        cascade = CascadeType.ALL
+    )
+    private List<Unit> units;
+
     public Item() {
         super();
         this.name = "Unnamed Item";
@@ -33,11 +45,6 @@ public class Item {
         super();
         this.name = name;
         this.price = 0;
-    }
-
-    @Override
-    public String toString() {
-        return "Item [id=" + id + ", name=" + name + ", price=" + price + ", rating=" + rating + "]";
     }
 
     public Long getId() {
@@ -70,6 +77,14 @@ public class Item {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public List<Unit> getUnits() {
+        return units;
+    }
+
+    public void setUnits(List<Unit> units) {
+        this.units = units;
     }
     
 }

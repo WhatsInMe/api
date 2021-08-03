@@ -1,5 +1,6 @@
 package dev.yw.whatsinme;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -11,17 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 @Entity
-public class Unit {
+public class Unit implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    // @Column(name = "unitid")
     private Long id;
 
     @Column(nullable = true)
@@ -29,22 +24,16 @@ public class Unit {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "item_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
     private Item item;
 
     public Unit(){
         super();
     }
 
-    public Unit(LocalDate expiration) {
+    public Unit(LocalDate expiration, Item item) {
         super();
         this.expiration = expiration;
-    }
-
-    @Override
-    public String toString() {
-        return "Unit [expiration=" + expiration + ", id=" + id + ", item=" + item + "]";
+        this.item = item;
     }
 
     public Long getId() {
