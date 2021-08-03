@@ -14,7 +14,7 @@ public class Item {
     @Column(name = "itemid")
     private int id;
 
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
     private String name;
 
     @Column(nullable = false)

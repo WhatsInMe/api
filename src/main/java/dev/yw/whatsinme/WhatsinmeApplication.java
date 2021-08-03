@@ -21,19 +21,23 @@ public class WhatsinmeApplication {
 
 		return (args) -> {
 			
-			// itemRepository.save(new Item("Milk"));
+			// itemRepository.save(new Item("Banana"));
+			// itemRepository.save(new Item("Cucumber"));
+			// itemRepository.save(new Item("Shiitake"));
+			// itemRepository.save(new Item("Yogurt"));
 
 			logger.info("sup");
 
-			// for (Item item : itemRepository.findAll()) {
-			// 	logger.info(item.toString());
-			// }
+			for (Item item : itemRepository.findAll()) {
+				logger.info(item.toString());
+			}
 
 			// for (Item item : itemRepository.findByDescription("Google")) {
 			// 	logger.info(item.toString());
 			// }
 
-			// logger.info(itemRepository.findById(1).toString());
+			logger.info(itemRepository.findById(1).toString());
+			logger.info(itemRepository.findByName("Shiitake").toString());
 
 		};
 
