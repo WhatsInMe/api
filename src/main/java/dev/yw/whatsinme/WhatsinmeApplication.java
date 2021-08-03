@@ -21,19 +21,19 @@ public class WhatsinmeApplication {
 
 		return (args) -> {
 			
-			// bookmarkRepository.save(new Bookmark("Bing", "https://bing.com"));
+			// itemRepository.save(new Item("Milk"));
 
 			logger.info("sup");
 
-			// for (Bookmark bookmark : bookmarkRepository.findAll()) {
-			// 	logger.info(bookmark.toString());
+			// for (Item item : itemRepository.findAll()) {
+			// 	logger.info(item.toString());
 			// }
 
-			// for (Bookmark bookmark : bookmarkRepository.findByDescription("Google")) {
-			// 	logger.info(bookmark.toString());
+			// for (Item item : itemRepository.findByDescription("Google")) {
+			// 	logger.info(item.toString());
 			// }
 
-			// logger.info(bookmarkRepository.findById(3).toString());
+			// logger.info(itemRepository.findById(1).toString());
 
 		};
 
