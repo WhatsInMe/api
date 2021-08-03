@@ -50,29 +50,28 @@ public class Item implements Serializable {
                 + rating + "]";
     }
 
-    public Item() {
-        super();
-        this.name = "Unnamed Item";
-        this.price = 0;
-    }
-
-    public Item(String name) {
-        super();
-        this.name = name;
-        this.price = 0;
-    }
-
-    public Item(String name, int price) {
-        super();
-        this.name = name;
-        this.price = price;
-    }
-
-    public Item(String name, int price, int lifetime) {
+    public Item(String name, int price, int lifetime, int rating) {
         super();
         this.name = name;
         this.price = price;
         this.lifetime = lifetime;
+        this.rating = rating;
+    }
+
+    public Item() {
+        this("Unnamed Item", 0, 0, 0);
+    }
+
+    public Item(String name) {
+        this(name, 0, 0, 0);
+    }
+
+    public Item(String name, int price) {
+        this(name, price, 0, 0);
+    }
+
+    public Item(String name, int price, int lifetime) {
+        this(name, price, lifetime, 0);
     }
 
     public Long getId() {

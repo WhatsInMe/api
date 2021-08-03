@@ -40,6 +40,10 @@ public class WhatsinmeApplication {
 				itemRepository.findByName("Milk")
 			));
 
+			unitRepository.save(new Unit(
+				itemRepository.findByName("Banana")
+			));
+
 			// Item item = itemRepository.findByName("Milk");
 			// Unit unit00 = new Unit(LocalDate.now());
 			// unit00.setItem(item);

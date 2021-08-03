@@ -26,25 +26,17 @@ public class Unit implements Serializable {
     @JoinColumn(name = "item_id", nullable = false)
     private Item item;
 
-    public Unit(){
-        super();
-    }
-
     public Unit(Item item){
         super();
-        try {
+
+        if (item.getLifetime() > 0) {
             this.expiration = LocalDate.now().plusDays(item.getLifetime());
-        } catch (Exception e) {
-            e.printStackTrace();
+        } else {
+            this.expiration = null;
         }
+
         this.item = item;
     }
-
-    // public Unit(LocalDate expiration, Item item) {
-    //     super();
-    //     this.expiration = expiration;
-    //     this.item = item;
-    // }
 
     public Long getId() {
         return id;
