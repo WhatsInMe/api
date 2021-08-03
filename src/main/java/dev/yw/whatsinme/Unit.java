@@ -30,11 +30,21 @@ public class Unit implements Serializable {
         super();
     }
 
-    public Unit(LocalDate expiration, Item item) {
+    public Unit(Item item){
         super();
-        this.expiration = expiration;
+        try {
+            this.expiration = LocalDate.now().plusDays(item.getLifetime());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         this.item = item;
     }
+
+    // public Unit(LocalDate expiration, Item item) {
+    //     super();
+    //     this.expiration = expiration;
+    //     this.item = item;
+    // }
 
     public Long getId() {
         return id;

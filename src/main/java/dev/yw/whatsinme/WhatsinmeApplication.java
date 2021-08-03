@@ -26,14 +26,17 @@ public class WhatsinmeApplication {
 
 		return (args) -> {
 			
-			itemRepository.save(new Item("Milk"));
+			itemRepository.save(new Item("Milk", 500, 14));
 			itemRepository.save(new Item("Banana"));
 			itemRepository.save(new Item("Cucumber"));
 			itemRepository.save(new Item("Shiitake"));
 			itemRepository.save(new Item("Yogurt"));
 
+			for (Item item : itemRepository.findAll()) {
+				logger.info(item.toString());
+			}
+
 			unitRepository.save(new Unit(
-				LocalDate.now(),
 				itemRepository.findByName("Milk")
 			));
 
@@ -49,10 +52,6 @@ public class WhatsinmeApplication {
 			// Unit unit01 = new Unit(LocalDate.of(1990, 1, 1));
 			// unit01.setItem(itemRepository.findByName("Milk"));
 			// unitRepository.save(unit01);
-
-			// for (Item item : itemRepository.findAll()) {
-			// 	logger.info(item.toString());
-			// }
 
 			// for (Unit unit : unitRepository.findByItemId(1L)) {
 			// 	// logger.info("ree");

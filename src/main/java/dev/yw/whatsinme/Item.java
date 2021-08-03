@@ -28,12 +28,27 @@ public class Item implements Serializable {
     @Column(nullable = true)
     private int rating;
 
+    @Column(nullable = true)
+    private int lifetime;
+
     @OneToMany(
         mappedBy = "item",
         fetch = FetchType.LAZY,
         cascade = CascadeType.ALL
     )
     private List<Unit> units;
+
+    // @Override
+    // public String toString() {
+    //     return "Item [id=" + id + ", lifetime=" + lifetime + ", name=" + name + ", price=" + price + ", rating="
+    //             + rating + ", units=" + units + "]";
+    // }
+
+    @Override
+    public String toString() {
+        return "Item [id=" + id + ", lifetime=" + lifetime + ", name=" + name + ", price=" + price + ", rating="
+                + rating + "]";
+    }
 
     public Item() {
         super();
@@ -45,6 +60,19 @@ public class Item implements Serializable {
         super();
         this.name = name;
         this.price = 0;
+    }
+
+    public Item(String name, int price) {
+        super();
+        this.name = name;
+        this.price = price;
+    }
+
+    public Item(String name, int price, int lifetime) {
+        super();
+        this.name = name;
+        this.price = price;
+        this.lifetime = lifetime;
     }
 
     public Long getId() {
@@ -77,6 +105,14 @@ public class Item implements Serializable {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public int getLifetime() {
+        return lifetime;
+    }
+
+    public void setLifetime(int lifetime) {
+        this.lifetime = lifetime;
     }
 
     public List<Unit> getUnits() {
