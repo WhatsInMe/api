@@ -1,6 +1,9 @@
 server:
   port: ${SERVER_PORT}
 spring:
+  # jackson:
+  #   serialization:
+  #     fail-on-empty-beans: false
   datasource:
     url: ${DB_URL}
     username: ${DB_USER}
@@ -8,11 +11,11 @@ spring:
   jpa:
     show-sql: true
     generate-ddl: true
+    hibernate:
+      ddl-auto: create
     properties:
       hibernate:
-        jdbc:
-          lob:
-            non_contextual_creation: true
-  jackson:
-    serialization:
-      fail-on-empty-beans: false
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        # jdbc:
+        #   lob:
+        #     non_contextual_creation: true

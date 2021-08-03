@@ -10,9 +10,9 @@ import javax.persistence.Id;
 public class Item {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "itemid")
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // @Column(name = "itemid")
+    private Long id;
 
     @Column(unique = true, nullable = false)
     private String name;
@@ -20,33 +20,31 @@ public class Item {
     @Column(nullable = false)
     private int price;
 
-    @Column(nullable = false)
-    private int quantity;
+    @Column(nullable = true)
+    private int rating;
 
     public Item() {
         super();
         this.name = "Unnamed Item";
         this.price = 0;
-        this.quantity = 0;
     }
 
     public Item(String name) {
         super();
         this.name = name;
         this.price = 0;
-        this.quantity = 0;
     }
 
     @Override
     public String toString() {
-        return "Item [id=" + id + ", name=" + name + ", price=" + price + ", quantity=" + quantity + "]";
+        return "Item [id=" + id + ", name=" + name + ", price=" + price + ", rating=" + rating + "]";
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -66,12 +64,12 @@ public class Item {
         this.price = price;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getRating() {
+        return rating;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setRating(int rating) {
+        this.rating = rating;
     }
     
 }

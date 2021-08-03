@@ -1,5 +1,7 @@
 package dev.yw.whatsinme;
 
+import java.time.LocalDate;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -17,26 +19,28 @@ public class WhatsinmeApplication {
 	}
 
 	@Bean
-	public CommandLineRunner test(ItemRepository itemRepository) {
+	public CommandLineRunner test(
+		ItemRepository itemRepository,
+		UnitRepository unitRepository
+	) {
 
 		return (args) -> {
 			
-			// itemRepository.save(new Item("Banana"));
-			// itemRepository.save(new Item("Cucumber"));
-			// itemRepository.save(new Item("Shiitake"));
-			// itemRepository.save(new Item("Yogurt"));
+			itemRepository.save(new Item("Milk"));
+			itemRepository.save(new Item("Banana"));
+			itemRepository.save(new Item("Cucumber"));
+			itemRepository.save(new Item("Shiitake"));
+			itemRepository.save(new Item("Yogurt"));
 
-			logger.info("sup");
+			Unit unit = new Unit(LocalDate.now());
+			unit.setItem(itemRepository.findByName("Milk"));
+			unitRepository.save(unit);
 
-			for (Item item : itemRepository.findAll()) {
-				logger.info(item.toString());
-			}
-
-			// for (Item item : itemRepository.findByDescription("Google")) {
+			// for (Item item : itemRepository.findAll()) {
 			// 	logger.info(item.toString());
 			// }
 
-			// logger.info(itemRepository.findById(1).toString());
+			// logger.info(itemRepository.findById(1L).toString());
 			// logger.info(itemRepository.findByName("Shiitake").toString());
 
 		};
