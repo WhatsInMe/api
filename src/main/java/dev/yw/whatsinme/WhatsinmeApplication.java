@@ -36,8 +36,8 @@ public class WhatsinmeApplication {
 			// 	logger.info(item.toString());
 			// }
 
-			logger.info(itemRepository.findById(1).toString());
-			logger.info(itemRepository.findByName("Shiitake").toString());
+			// logger.info(itemRepository.findById(1).toString());
+			// logger.info(itemRepository.findByName("Shiitake").toString());
 
 		};
 
