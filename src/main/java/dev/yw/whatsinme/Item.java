@@ -21,14 +21,8 @@ public class Item implements Serializable {
 
     @Column(unique = true, nullable = false)
     private String name;
-
-    @Column(nullable = false)
     private int price;
-
-    @Column(nullable = true)
     private int rating;
-
-    @Column(nullable = true)
     private int lifetime;
 
     @OneToMany(
