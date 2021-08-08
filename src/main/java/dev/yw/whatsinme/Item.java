@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Item implements Serializable {
 
@@ -25,18 +27,13 @@ public class Item implements Serializable {
     private int rating;
     private int lifetime;
 
+    @JsonIgnore
     @OneToMany(
         mappedBy = "item",
         fetch = FetchType.LAZY,
         cascade = CascadeType.ALL
     )
     private List<Unit> units;
-
-    // @Override
-    // public String toString() {
-    //     return "Item [id=" + id + ", lifetime=" + lifetime + ", name=" + name + ", price=" + price + ", rating="
-    //             + rating + ", units=" + units + "]";
-    // }
 
     @Override
     public String toString() {
