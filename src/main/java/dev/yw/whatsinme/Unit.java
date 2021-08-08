@@ -20,8 +20,6 @@ public class Unit implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = true)
     private LocalDate expiration;
 
     @JsonIgnore
