@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Unit implements Serializable {
     
@@ -22,9 +24,14 @@ public class Unit implements Serializable {
     @Column(nullable = true)
     private LocalDate expiration;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "item_id", nullable = false)
     private Item item;
+
+    public Unit(){
+        super();
+    }
 
     public Unit(Item item){
         super();

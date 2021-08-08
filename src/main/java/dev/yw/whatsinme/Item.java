@@ -27,7 +27,6 @@ public class Item implements Serializable {
     private int rating;
     private int lifetime;
 
-    @JsonIgnore
     @OneToMany(
         mappedBy = "item",
         fetch = FetchType.LAZY,
