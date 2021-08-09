@@ -21,4 +21,4 @@ spring:
         #     non_contextual_creation: true
 logging:
   file:
-    path: /
+    path: .
