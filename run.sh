@@ -4,7 +4,7 @@
 
 ./mvnw clean package || exit 1
 
-docker build -t yw/whatsinme . || exit 1
+docker build -t yw/whatsinme-api . || exit 1
 
 case $1 in
     "local")
@@ -14,10 +14,9 @@ case $1 in
             -e DB_USER="$LOCAL_DB_USER" \
             -e DB_PASS="$LOCAL_DB_PASS" \
             --rm \
-            -p ${LOCAL_REAL_PORT}:${LOCAL_SERVER_PORT} \
-            --name whatsinme \
+            --name whatsinme-api \
             --network="host" \
-            yw/whatsinme
+            yw/whatsinme-api
     ;;
     *)
         docker run \
@@ -27,7 +26,7 @@ case $1 in
             -e DB_PASS="$DB_PASS" \
             --rm \
             -p ${REAL_PORT}:${SERVER_PORT} \
-            --name whatsinme \
-            yw/whatsinme
+            --name whatsinme-api \
+            yw/whatsinme-api
     ;;
 esac
